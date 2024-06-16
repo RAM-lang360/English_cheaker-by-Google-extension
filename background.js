@@ -40,7 +40,7 @@ async function makerequest(data) {
 }
 
 async function fetchData(data) {
-  var apikey = "AIzaSyC_MgvIo7ulAkU7HtqMubb0EeAkFiBIFyA";
+  var apikey = "Individually API key";
   var url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apikey}`;
   try {
     const response = await fetch(url, {
