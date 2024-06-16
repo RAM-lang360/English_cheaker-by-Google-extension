@@ -1,0 +1,30 @@
+{
+    "manifest_version": 3,
+    "name": "Engish_check",
+    "description": "Base Level Extension",
+    "version": "1.0",
+    "icons": {
+        "48": "imgfile/ECimg.png"
+    },
+    "background":{
+        "service_worker":"background.js"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon":"imgfile/ECimg.png"
+    },
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self'; script-src-elem 'self' 'unsafe-inline' https://music.yandex.ru/;"
+    },
+    "content_scripts": [
+        {
+            "js": [
+                "popup.js"
+            ],
+            "matches": [
+                "*://*/*"
+            ]
+        }
+    ],
+    "host_permissions":["https://api-address/"]
+}

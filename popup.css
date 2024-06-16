@@ -1,0 +1,31 @@
+body{
+    width:400px;
+}
+
+.input-form{
+    width:600px;
+    border-radius: 5px;
+    display: flex;
+
+}
+.input{
+    width: 300px;
+    height:25px
+}
+
+.input-button{
+    width: 90px;
+    height:30px;
+    font-family:"Comic Sans MS";
+    color:white;
+    background-color: blue;
+}
+.autoOption{
+    bottom:0;
+    background-color:blue
+}
+footer{
+    font-size: 12px;
+    background-color: wheat;
+    
+}
