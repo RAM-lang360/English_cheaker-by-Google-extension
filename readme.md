@@ -1,4 +1,4 @@
-# English Cheacker by google extension
+# English Checker by google extension
 ## 概要
 このアプリケーションは英文、スペルの正誤や似ている英単語の説明などをGoogle が提供するGeminiAIを用いたGoogle拡張機能である。
 ## 開発環境
