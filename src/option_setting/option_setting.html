@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="styleguide.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="config-setting">
+        <div class="div">
+            <div class="overlap-group">
+                <div class="title">
+                    <div class="text-wrapper">モデルの設定</div>
+                    <div class="grammar-check-system">Model setting</div>
+                </div>
+                <div class="back-button" id="back_button">
+                    <div class="back-button-text">戻る</div>
+                </div>
+            </div>
+            <div class="view">
+                <div class="store-frame" id="store_button">
+                    <div class="store-text">保存</div>
+                </div>
+            </div>
+            <div class="model-label">
+                <div class="text-wrapper-3">無料枠モデル</div>
+            </div>
+            <div class="div-wrapper">
+                <div class="text-wrapper-3">有料枠モデル</div>
+            </div>
+            <div class="models">
+                <button type="button" class="model-frame-1">
+                    <div class="model-text">gemini-2.0-flash</div>
+                </button>
+                <button type="button" class="model-frame-2">
+                    <div class="model-text">gemini-1.5-pro</div>
+                </button>
+                <button type="button" class="model-frame-3">
+                    <div class="model-text">gemini-2.5-pro</div>
+                </button>
+                <button type="button" class="model-frame-4">
+                    <div class="model-text">gemini-2.0-pro</div>
+                </button>
+            </div>
+            <div class="store-result" id="store_result">モデルを選択してください</div>
+
+            <div class="model-explaination">
+                <div class="model-name-label">
+                    <div class="model-name-label-text">モデル名</div>
+                </div>
+                <div class="model-name" id="model_name"></div>
+                <div class="model-explaination-label">
+                    <div class="model-explaination-label-text">説明</div>
+                </div>
+                <div class="model-explaination-frame">
+                    <div class="model-explaination-text" id="model_explaination_text"></div>
+                </div>
+            </div>
+            <div class="model-explaination-title">選択されたモデルの説明</div>
+        </div>
+    </div>
+    <script src="option_setting.js"></script>
+</body>
+
+</html>

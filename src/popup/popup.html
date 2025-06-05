@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title class="title">English check</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="popup">
+    <div class="div">
+      <div class="title">
+        <div class="text-wrapper">英文正誤判断システム</div>
+        <div class="text-wrapper-2">Grammar check system</div>
+      </div>
+      <button type="button" class="api_setting" id="api_setting">
+        <div class="text-wrapper-3">APIの設定</div>
+      </button>
+      <button type="button" class="option_setting" id="option_setting">
+        <div class="API">オプションの選択</div>
+      </button>
+      <div class="component">
+        <div class="input">
+          <input type="text" class="request_text" id="request_text" placeholder="文章・単語を入力してください">
+          <button type="button" id="send_button" class="div-wrapper">
+            <span class="text-wrapper-4">評価</span>
+          </button>
+        </div>
+        <div class="order">
+          <button type="button" id="text_check" class="order-btn">
+            <span class="text-wrapper-5">文節チェック</span>
+          </button>
+          <button type="button" id="meaning_check" class="order-btn">
+            <span class="text-wrapper-5">意味の違い</span>
+          </button>
+          <button type="button" id="spell_check" class="order-btn">
+            <span class="text-wrapper-5">スペルチェック</span>
+          </button>
+          
+        </div>
+        <div class="status" id="status"></div>
+      </div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+
+</body>
+
+</html>
