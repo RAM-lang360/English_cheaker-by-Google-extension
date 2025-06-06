@@ -40,12 +40,18 @@ class ApiSetting {
         this.testbutton.addEventListener('click', () => {
             // APIキーの保存
             const apikey = this.api_text.value.trim();
+            if (!apikey) {
+                document.getElementById("test_result").classList.remove("true");
+                document.getElementById("test_result").classList.add("false");
+                document.getElementById("test_result").textContent = "失敗";
+                return
+            }
             chrome.storage.local.set({ apikey: apikey }, () => {
                 console.log("API key stored:", apikey);
             });
-            
+
             chrome.runtime.sendMessage(
-                { type: "test"}
+                { type: "test" }
             );
         });
     }

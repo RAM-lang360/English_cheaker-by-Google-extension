@@ -1,41 +1,31 @@
-.grammar-check {
+.body{
+  width: 500px;
+  height:200px;
   background-color: #e3f2fd;
-  display: flex;
-  justify-content: center;
-  width: 100%;
 }
-
-.grammar-check .div {
-  background-color: #e3f2fd;
-  width: 519px;
-  padding: 16px;
+.order-check {
   display: flex;
+  width: 519px;
+  background-color: #e3f2fd;
+  padding: 16px;
   flex-direction: column;
   gap: 16px;
 }
 
-.grammar-check .overlap {
-  width: 100%;
-}
-
-.grammar-check .title {
+.order-check .title {
   width: 100%;
   background-color: #0b8678;
   padding: 8px;
   box-sizing: border-box;
 }
 
-.grammar-check .text-wrapper {
+.order-check .order-check-title {
   color: #ffffff;
   font-size: 21px;
-  white-space: nowrap;
   font-family: "Inter-Regular", Helvetica;
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: normal;
 }
 
-.grammar-check .text-wrapper-2 {
+.order-check .order-check-title-en{
   font-family: "Inter-Regular", Helvetica;
   font-weight: 400;
   color: #ffffff;
@@ -44,14 +34,13 @@
   line-height: normal;
 }
 
-.grammar-check .back-button {
+.order-check .back-button {
   position: absolute; 
   top:23px;
-  right: 30px;
+  left:420px;
   width: 111px;
   height: 46px;
   margin-top: 8px;
-  margin-left: auto;
   border-radius: 7px;
   border-color: transparent;
   background-color: #1976d2;
@@ -62,7 +51,7 @@
   cursor: pointer;
 }
 
-.grammar-check .back-button-text {
+.order-check .back-button-text {
   color: #ffffff;
   font-size: 20px;
   text-align: center;
@@ -72,8 +61,8 @@
   line-height: 46px;
 }
 
-.grammar-check .div-wrapper,
-.grammar-check .API-wrapper {
+.order-check .div-wrapper,
+.order-check .API-wrapper {
   width: 100%;
   height: auto;
   background-color: #1976d2;
@@ -82,18 +71,19 @@
   text-align: center;
 }
 
-.grammar-check .text-wrapper-4,
-.grammar-check .API {
-  font-family: "Inter-Regular", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 12px;
-  letter-spacing: 0;
-  line-height: normal;
-  padding: 6px;
+.order-check .input-content{
+  display: flex;
+  width: 111px;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+  background-color: #0b8678;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #ffffff;
 }
 
-.grammar-check .text-wrapper-5 {
+.order-check .content-text {
   color: #ffffff;
   font-size: 14px;
   text-align: center;
@@ -103,9 +93,8 @@
   line-height: normal;
 }
 
-.grammar-check .order-button-after-1,
-.grammar-check .order-button-after-2,
-.grammar-check .order-button-after-3 {
+.order-check .judgement,
+.order-check .correction_suggestion {
   background-color: #45338c;
   display: flex;
   width: 111px;
@@ -116,14 +105,7 @@
   border-radius: 8px;
   border: 1px solid #ffffff;
 }
-
-.grammar-check .order-button-after-1 {
-  background-color: #0b8678;
-}
-
-.grammar-check .view,
-.grammar-check .view-2,
-.grammar-check .view-3 {
+.order-check .result{
   width: 100%;
   height: auto;
   background-color: #ffffff;
@@ -132,8 +114,7 @@
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
-
-.grammar-check .text-wrapper-6 {
+.order-check .result-text {
   color: #000000;
   font-size: 14px;
   font-family: "Inter-Regular", Helvetica;
@@ -143,3 +124,4 @@
   white-space: normal;
   word-break: break-word;
 }
+

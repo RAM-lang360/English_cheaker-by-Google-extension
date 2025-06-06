@@ -12,13 +12,25 @@ class Order {
             });
         }
     }
-
     //responseの処理
     get_response() {
         console.log("get_responseメソッドが呼び出されました");
         chrome.runtime.onMessage.addListener((response, sender, sendResponse) => {
-
             if (response.type == "response") {
+
+                if (response.order=="text_check"){
+                    document.getElementById("order-check-title").textContent="文法チェック";
+                    document.getElementById("order-check-title-en").textContent="Grammar check";
+                }
+                if (response.order=="meaning_check"){
+                    document.getElementById("order-check-title").textContent="意味の違い";
+                    document.getElementById("order-check-title-en").textContent="Meaning difference";
+                }
+                if (response.order=="spell_check"){
+                    document.getElementById("order-check-title").textContent="スペルチェック";
+                    document.getElementById("order-check-title-en").textContent="Spell check";
+                }
+                
                 console.log("レスポンスを受信:", response);
                 // テキストチェックのレスポンス処理
                 const judgment = response.response.judgment;

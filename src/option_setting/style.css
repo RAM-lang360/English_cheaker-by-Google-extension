@@ -17,44 +17,33 @@
     position: absolute;
     width: 519px;
     height: 59px;
-    top: 0;
-    left: 0;
 }
 
 .config-setting .title {
     position: absolute;
     width: 519px;
     height: 59px;
-    top: 0;
-    left: 0;
     background-color: #0d47a1;
 }
 
-.config-setting .text-wrapper {
+.config-setting .model-title {
     position: absolute;
     width: 306px;
     top: 7px;
     left: 8px;
     font-size: 21px;
-    white-space: nowrap;
     font-family: "Inter-Regular", Helvetica;
-    font-weight: 400;
     color: #ffffff;
-    letter-spacing: 0;
-    line-height: normal;
 }
 
-.config-setting .grammar-check-system {
+.config-setting .model-title-en {
     position: absolute;
     width: 150px;
     top: 33px;
     left: 8px;
     font-family: "Inter-Regular", Helvetica;
-    font-weight: 400;
     color: #ffffff;
     font-size: 13px;
-    letter-spacing: 0;
-    line-height: normal;
 }
 
 .config-setting .back-button {
@@ -65,10 +54,9 @@
     height: 46px;
     margin-top: 8px;
     margin-left: auto;
-    border-radius: 7px;
+    border-radius: 8px;
     border-color: transparent;
     background-color: #1976d2;
-    overflow: hidden;
     border: 1px solid;
     color: white;
     font-size: 18px;
@@ -77,14 +65,12 @@
 
 .config-setting .back-button-text {
     position: relative;
+    top:7px;
     color: #ffffff;
     font-size: 20px;
     align-items: center;
     text-align: center;
     font-family: "Inter-Regular", Helvetica;
-    font-weight: 400;
-    letter-spacing: 0;
-    line-height: 46px;
 }
 
 .config-setting .view {
@@ -99,68 +85,62 @@
     position: relative;
     height: 36px;
     background-color: #1976d2;
-    border-radius: 5.38px;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
 .config-setting .store-text {
     position: absolute;
     width: 94px;
     height: 36px;
-    top: -1px;
-    left: 0;
+    top: 4px;
     font-family: "Inter-Regular", Helvetica;
     font-weight: 400;
     color: #ffffff;
     font-size: 17.5px;
     text-align: center;
-    letter-spacing: 0;
-    line-height: normal;
 }
 
-.config-setting .model-label {
-    top: 86px;
-    background-color: #000000;
+.config-setting .free-model-label {
+    position: absolute;
     display: flex;
     width: 129px;
     height: 27px;
+    top: 86px;
+    left: 8px;
     align-items: center;
     justify-content: center;
+    background-color: #000000;
     gap: 10px;
-    position: absolute;
-    left: 8px;
     border-radius: 8px;
-    overflow: hidden;
     border: 1px solid;
-    border-color: #ffffff;
+    border-color: #fff;
 }
 
-.config-setting .text-wrapper-3 {
+.config-setting .model-label-title {
     position: relative;
     width: fit-content;
+    top:-1px;
     font-size: 14px;
     text-align: center;
     font-family: "Inter-Regular", Helvetica;
-    font-weight: 400;
     color: #ffffff;
-    letter-spacing: 0;
-    line-height: normal;
 }
 
-.config-setting .div-wrapper {
-    top: 201px;
-    background-color: #932020;
+.config-setting .paid-model-label {
+    position: absolute;
     display: flex;
     width: 129px;
     height: 27px;
+    top: 201px;
+    left: 8px;
     align-items: center;
     justify-content: center;
+    background-color: #932020;
     gap: 10px;
-    position: absolute;
-    left: 8px;
     border-radius: 8px;
-    overflow: hidden;
     border: 1px solid;
-    border-color: #ffffff;
+    border-color: #fff;
 }
 
 
@@ -169,60 +149,62 @@
     position: absolute;
     width: 137px;
     height: 24px;
-    top: 0;
+    top: 3px;
     left: 2px;
+    text-align: center;
     font-family: "Inter-Regular", Helvetica;
     font-weight: 400;
     color: #ffffff;
     font-size: 14px;
-    text-align: center;
-    letter-spacing: 0;
-    line-height: normal;
 }
 
 
 .config-setting .model-frame-1 {
-    top: 116px;
-    left: 8px;
     position: absolute;
     width: 139px;
     height: 25px;
+    top: 116px;
+    left: 8px;
     background-color: #0b8678;
     border: 1px solid;
     border-color: #ffffff;
+    cursor: pointer;
 }
 
 .config-setting .model-frame-2 {
-    top: 116px;
-    left: 147px;
     position: absolute;
     width: 139px;
     height: 25px;
+    top: 116px;
+    left: 147px;
     background-color: #0b8678;
     border: 1px solid;
     border-color: #ffffff;
+    cursor: pointer;
 }
 
 .config-setting .model-frame-3 {
-    top: 231px;
-    left: 8px;
     position: absolute;
     width: 139px;
     height: 25px;
+    top: 231px;
+    left: 8px;
     background-color: #0b8678;
     border: 1px solid;
     border-color: #ffffff;
+    cursor: pointer;
 }
 
 .config-setting .model-frame-4 {
-    top: 231px;
-    left: 147px;
     position: absolute;
     width: 139px;
     height: 25px;
+    top: 231px;
+    left: 147px;
     background-color: #0b8678;
     border: 1px solid;
     border-color: #ffffff;
+    cursor: pointer;
 }
 
 .config-setting .model-frame-1.selected,
@@ -234,31 +216,27 @@
 
 .config-setting .store-result.true {
     position:absolute;
-    top:286px;
-    left:110px;
     display: block;
     width: fit-content;
+    top:286px;
+    left:110px;
     text-align: left;
     margin-left: 0;
     color: #0e8a25;
     font-size: 15px;
     font-family: "Inter-Regular", Helvetica;
-    font-weight: 400;
-    line-height: normal;
 }
 .config-setting .store-result.false {
     position:absolute;
-    top:286px;
-    left:110px;
     display: block;
     width: fit-content;
+    top:286px;
+    left:110px;
     text-align: left;
     margin-left: 0;
     color: #ff0000;
     font-size: 15px;
     font-family: "Inter-Regular", Helvetica;
-    font-weight: 400;
-    line-height: normal;
 }
 .config-setting .model-explaination {
     position: absolute;
@@ -332,9 +310,8 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 2px 10px;
-    position: relative;
     background-color: #0b8678;
+    padding: 2px 10px;
     border-radius: 8px;
 }
 
@@ -344,13 +321,9 @@
     height: 20px;
     align-items: center;
     text-align: center;
-    ;
     font-family: "Inter-Regular", Helvetica;
-    font-weight: 400;
     color: #ffffff;
     font-size: 13px;
-    letter-spacing: 0;
-    line-height: normal;
 }
 
 .config-setting .model-explaination-text {
@@ -360,8 +333,6 @@
     top: 21px;
     left: 15px;
     text-align: left;
-    white-space: normal;
-    word-break: break-word;
 }
 
 .config-setting .model-explaination-title {
@@ -371,9 +342,6 @@
     top: 95px;
     left: 311px;
     font-family: "Inter-Regular", Helvetica;
-    font-weight: 400;
     color: #000000;
     font-size: 12px;
-    letter-spacing: 0;
-    line-height: normal;
 }

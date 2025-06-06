@@ -9,103 +9,71 @@ body{
   position: absolute;
   width: 519px;
   height: 59px;
-  top: 0;
-  left: 0;
+  top:0px;
+  left:0px;
   background-color: #0d47a1;
 }
-.popup .status{
-  position: absolute;
-  width: 519px;
-  height: 20px;
-  top: 70px;
-  font-size: 14px;
-  white-space: nowrap;
-  font-family: "Inter-Regular", Helvetica;
-}
-.popup .status.error{
-  color: #ff0000;
-}
-.popup .text-wrapper {
+
+.popup .popup-title {
   position: absolute;
   width: 306px;
   top: 7px;
   left: 8px;
   font-size: 21px;
-  white-space: nowrap;
   font-family: "Inter-Regular", Helvetica;
-  font-weight: 400;
   color: #ffffff;
-  letter-spacing: 0;
-  line-height: normal;
 }
-
-.popup .text-wrapper-2 {
+.popup .popup-title-en {
   position: absolute;
   width: 150px;
   top: 33px;
   left: 8px;
   font-family: "Inter-Regular", Helvetica;
-  font-weight: 400;
   color: #ffffff;
   font-size: 13px;
-  letter-spacing: 0;
-  line-height: normal;
 }
-
-.popup .api_setting {
+.popup .api-setting {
+  position: absolute;
+  width:257px;
+  height: 30px;
   top: 187px;
-  width:249px;
-  height: 30px;
+  left:0px;
   background-color: #1976d2;
-  border-color: transparent;
-  position: absolute;
-  overflow: hidden;
   border: 1px solid;
-}
-.popup .api_setting.selected {
-  background-color: #0b8678;
+  cursor: pointer;
 }
 
-.popup .text-wrapper-3 {
-  left: -5px;
+.popup .api-setting-text {
   position: absolute;
-  width: 249px;
+  width: 257px;
   height: 30px;
-  top: 0;
+  top:4px;
+  left: -3px;
   font-family: "Inter-Regular", Helvetica;
-  font-weight: 400;
   color: #ffffff;
   font-size: 12px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
 }
-
-.popup .option_setting {
+.popup .option-setting {
+  position: absolute;
   width: 261px;
   height: 30px;
   top: 187px;
   left: 258px;
   background-color: #1976d2;
   border-color: #ffffff;
-  position: absolute;
-  overflow: hidden;
   border: 1px solid;
+  cursor: pointer;
 }
-
-.popup .API {
-  left: -3px;
+.popup .option-setting-text {
   position: absolute;
   width: 268px;
   height: 29px;
-  top: 0;
+  top:4px;
+  left: -3px;
   font-family: "Inter-Regular", Helvetica;
   font-weight: 400;
   color: #ffffff;
   font-size: 12px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
 }
 
 .popup .component {
@@ -124,120 +92,93 @@ body{
   left: 0;
 }
 
-.popup .request_text {
+.popup .request-text {
   position: absolute;
   width: 345px;
   height: 45px;
-  top: 0;
-  left: 0;
-  border-radius: 7px;
+  border-radius: 8px;
   border: 1px solid;
   border-color: #000000;
 }
 
-.popup .div-wrapper {
+.popup .send-button {
+  position:absolute;
   width: 127px;
-  height: 45px;
-  top: 0;
+  height: 49px;
   left: 359px;
   background-color: #1976d2;
-  border-radius: 7px;
-  border-color: transparent;
-  position: absolute;
-  overflow: hidden;
+  border-radius: 8px;
   border: 1px solid;
+  cursor: pointer;
 }
 
-.popup .text-wrapper-4 {
+.popup .send-button-text {
   position: absolute;
   width: 140px;
   height: 55px;
-  top: -7px;
-  left: -6px;
+  top: -1px;
+  right:-8px;
   font-size: 30px;
-  text-align: center;
   font-family: "Inter-Regular", Helvetica;
-  font-weight: 400;
   color: #ffffff;
-  letter-spacing: 0;
-  line-height: normal;
 }
 
-.popup .overlap-group {
-  position: absolute;
-  width: 346px;
-  height: 22px;
-  top: 0;
-  left: 0;
-  
-}
-
-
-
-.popup .text-wrapper-5 {
+.popup .order-text {
   position: relative;
   width: fit-content;
+  top:-2px;
   font-size: 14px;
   text-align: center;
   font-family: "Inter-Regular", Helvetica;
-  font-weight: 400;
   color: #ffffff;
-  letter-spacing: 0;
-  line-height: normal;
-}
-.popup #text_check {
-  display: flex;
-  width: 125px;
-  height: 22px;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  position: absolute;
-  top: 1;
-  left: 0;
-  background-color: #0b8678;
-  border-radius: 8px 0px 0px 8px;
-  overflow: hidden;
-  border: 1px solid;
-  border-color: #000000;
 }
 
-.popup #meaning_check {
-  display: flex;
+.popup .text-check {
+  position: absolute;
   width: 125px;
   height: 22px;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  top: 0;
+  background-color: #0b8678;
+  border-radius: 8px;
+  border: 1px solid;
+  cursor: pointer;
+}
+
+.popup .meaning-check {
+  position: absolute;
+  width: 125px;
+  height: 22px;
   left: 111px;
   background-color: #0b8678;
-  border-radius: 8px 0px 0px 8px;
-  border-color: #ffffff;
-  position: absolute;
-  overflow: hidden;
+  border-radius: 8px;
   border: 1px solid;
+  cursor: pointer;
 }
 
-.popup #spell_check {
-  display: flex;
+.popup .spell-check {
+  position: absolute;
   width: 125px;
   height: 22px;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  top: 0;
   left: 222px;
   background-color: #0b8678;
   border-radius: 8px;
-  border-color: #ffffff;
-  position: absolute;
-  overflow: hidden;
   border: 1px solid;
+  cursor: pointer;
 }
 
 .popup #text_check.selected,
 .popup #meaning_check.selected,
 .popup #spell_check.selected {
   background-color:#240B87;
+}
+
+.popup .status{
+  position: absolute;
+  width: 519px;
+  height: 20px;
+  top: 70px;
+  font-size: 14px;
+  font-family: "Inter-Regular", Helvetica;
+}
+.popup .status.error{
+  color: #ff0000;
 }

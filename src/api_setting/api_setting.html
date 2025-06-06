@@ -4,40 +4,36 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="globals.css" />
-    <link rel="stylesheet" href="styleguide.css" />
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
     <div class="API-setting">
-        <div class="div">
-            <div class="title">
-                <div class="text-wrapper">英文正誤判断システム</div>
-                <div class="text-wrapper-2">Grammar check system</div>
-            </div>
-            <button type="button" class="back_button" id="back_button">
-                <div class="backbuttontext">戻る</div>
-            </button>
-            <input type="text" class="frame" id="api_key" placeholder="API Key"></input>
-            <div class="view2">
-                <div class="text-wrapper-3" id="store_result"></div>
-            </div>
-            <div class="view1">
-                <div class="text-wrapper-3" id="test_result"></div>
-            </div>
-            
+        <div class="title">
+            <div class="title-text">API設定</div>
+            <div class="title-text-en">API setting</div>
+        </div>
+        <button type="button" class="back_button" id="back_button">
+            <div class="back-button-text">戻る</div>
+        </button>
+        <input type="text" class="input-text" id="api_key" placeholder="API Key"></input>
+        <div class="store-result">
+            <div class="result-text" id="store_result"></div>
+        </div>
+        <div class="test-result">
+            <div class="result-text" id="test_result"></div>
+        </div>
 
-            <div class="frame-wrapper">
-                <button class="frame-2">
-                    <span class="text-wrapper-5" id="api-setting-store-button">保存</span>
-                </button>
-            </div>
-            <div class="view-2">
-                <button class="frame-2">
-                    <span class="text-wrapper-5" id="api-setting-test-button">テスト</span>
-                </button>
-            </div>
+
+        <div class="store-button">
+            <button class="store-button-label">
+                <span class="button-text" id="api-setting-store-button">保存</span>
+            </button>
+        </div>
+        <div class="test-button">
+            <button class="test-button-label">
+                <span class="button-text" id="api-setting-test-button">テスト</span>
+            </button>
         </div>
     </div>
     <script src="api_setting.js"></script>

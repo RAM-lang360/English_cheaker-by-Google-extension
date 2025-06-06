@@ -26,7 +26,6 @@ class Popup {
     // 送信ボタンが押されたときの処理
     send_background() {
         if (!this.send_button || !this.request_text) return;
-
         this.send_button.addEventListener("click", () => {
             const text = this.request_text.value.trim();
             const selected = document.querySelector(".order .selected");
@@ -44,6 +43,8 @@ class Popup {
             }
             // back groundに送信する
             console.log("バックグラウンドにリクエストを送信:", { type: "request", request_text: text, order: orderId });
+            //ステータスの表示
+            document.getElementById("status").textContent = "ステータス: 実行中";
             chrome.runtime.sendMessage(
                 {
                     type: "request",

@@ -58,14 +58,17 @@ class Option_setting {
                         this.store_result.classList.remove("true");
                         this.store_result.classList.add("false");
                         this.store_result.textContent = "課金回避のため使用不可";
+                        found = 1;
                     }
-                    chrome.storage.local.set({ endpoint: text }, () => {
-                        console.log("endpoint stored:", text);
-                    });
-                    this.store_result.classList.remove("false");
-                    this.store_result.classList.add("true");
-                    this.store_result.textContent = "成功";
-                    found = true;
+                    else {
+                        chrome.storage.local.set({ endpoint: text }, () => {
+                            console.log("endpoint stored:", text);
+                        });
+                        this.store_result.classList.remove("false");
+                        this.store_result.classList.add("true");
+                        this.store_result.textContent = "成功";
+                        found = 2;
+                    }
                 }
             });
 
