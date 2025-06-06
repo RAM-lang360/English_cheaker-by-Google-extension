@@ -2,9 +2,10 @@
 class Order {
     constructor() {
         this.back_button = document.getElementById("back_button");
-        this.api_key = null; // APIキーを格納する変数
-        this.response = null; // レスポンスを格納する変数
+        this.api_key = null; 
+        this.response = null; 
     }
+    //back-buttonの設定
     back_button_setup() {
         if (this.back_button) {
             this.back_button.addEventListener("click", () => {
@@ -15,9 +16,10 @@ class Order {
     //responseの処理
     get_response() {
         console.log("get_responseメソッドが呼び出されました");
-        chrome.runtime.onMessage.addListener((response, sender, sendResponse) => {
+        chrome.runtime.onMessage.addListener((response) => {
             if (response.type == "response") {
 
+                //titleの変更
                 if (response.order=="text_check"){
                     document.getElementById("order-check-title").textContent="文法チェック";
                     document.getElementById("order-check-title-en").textContent="Grammar check";
@@ -31,8 +33,8 @@ class Order {
                     document.getElementById("order-check-title-en").textContent="Spell check";
                 }
                 
-                console.log("レスポンスを受信:", response);
-                // テキストチェックのレスポンス処理
+
+                // レスポンスを各変数に格納
                 const judgment = response.response.judgment;
                 const reason = response.response.reason;
                 const correction_suggestion = response.response.ai_assessment;
@@ -42,28 +44,28 @@ class Order {
                 console.log("判断理由:", reason);
                 console.log("修正案:", correction_suggestion);
                 console.log("入力テキスト:", input_text);
+                //文法チェック、スペルチェックの結果出力
                 if (response.order == "text_check" || response.order == "spell_check") {
-
-                    //テキストの入力
                     const inputText = document.getElementById("input_text");
-                    inputText.textContent = input_text; // 入力テキストを表示
+                    inputText.textContent = input_text; 
                     const correctionText = document.getElementById("judgment_reason");
-                    correctionText.textContent = reason; // 判断理由
+                    correctionText.textContent = reason; 
                     const reasonText = document.getElementById("correction_suggestion");
-                    reasonText.textContent = correction_suggestion; // 修正案
+                    reasonText.textContent = correction_suggestion;
                 }
+                //意味の違いの結果出力
                 if (response.order == "meaning_check") {
-                    // 意味チェックのレスポンス処理
                     const inputText = document.getElementById("input_text");
-                    inputText.textContent = input_text; // 入力テキストを表示
+                    inputText.textContent = input_text; 
                     const correctionText = document.getElementById("judgment_reason");
-                    correctionText.innerHTML = reason; // 判断理由
+                    correctionText.innerHTML = reason;
+                    //correction_suggestionはjson形式のため以下の処理を記述
                     const formattedText = Object.entries(correction_suggestion)
                         .map(([key, value]) => `${key}: ${value}`)
                         .join("<br>"); 
                     console.log("修正案:", formattedText);
                     const reasonText = document.getElementById("correction_suggestion");
-                    reasonText.innerHTML = formattedText; // 修正案
+                    reasonText.innerHTML = formattedText;
                 }
             }
         });

@@ -5,7 +5,7 @@ class ApiSetting {
         this.testbutton = document.getElementById("api-setting-test-button");
         this.back_button = document.getElementById("back_button"); // ←追加
     }
-
+    //back-buttonの設定
     back_button_setup() {
         if (this.back_button) {
             this.back_button.addEventListener("click", () => {
@@ -13,10 +13,8 @@ class ApiSetting {
             });
         }
     }
-
+    //apikeyをchrome storageに保存する処理
     apikey_store() {
-        if (!this.storebutton || !this.api_text) return;
-
         this.storebutton.addEventListener('click', async () => {
             const apikey = this.api_text.value.trim();
             if (!apikey) {
@@ -29,14 +27,12 @@ class ApiSetting {
                 document.getElementById("store_result").classList.remove("false");
                 document.getElementById("store_result").classList.add("true");
                 document.getElementById("store_result").textContent = "成功";
-                console.log("API key stored:", apikey);
             });
         });
     }
 
+    //pikeyをchrome storageに保存する処理
     apikey_test() {
-        if (!this.testbutton || !this.api_text) return;
-
         this.testbutton.addEventListener('click', () => {
             // APIキーの保存
             const apikey = this.api_text.value.trim();
@@ -46,15 +42,15 @@ class ApiSetting {
                 document.getElementById("test_result").textContent = "失敗";
                 return
             }
-            chrome.storage.local.set({ apikey: apikey }, () => {
-                console.log("API key stored:", apikey);
-            });
-
+            //chrome storageに設定
+            chrome.storage.local.set({ apikey: apikey});
+            //backgroundへテストのリクエストを行う
             chrome.runtime.sendMessage(
                 { type: "test" }
             );
         });
     }
+    //backgroundからのテスト結果を取得
     get_test_result() {
         chrome.runtime.onMessage.addListener((message) => {
             if (message.type === "test") {

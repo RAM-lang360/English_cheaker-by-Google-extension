@@ -17,7 +17,7 @@ class Option_setting {
             "gemini-2.0-pro": "'課金回避のため使用不可'<br>マルチモーダルに対応し高度な推論と膨大なトークンを解析できるハイエンドなAIモデル。"
         };
     }
-
+    //back buttonの設定
     back_button_setup() {
         if (this.back_button) {
             this.back_button.addEventListener("click", () => {
@@ -26,6 +26,7 @@ class Option_setting {
         }
     }
 
+    //モデル選択ボタンの設定
     button_check() {
         if (!this.models) return;
         this.models.forEach(btn => {
@@ -35,6 +36,8 @@ class Option_setting {
             });
         });
     }
+
+    //選択されたモデルに応じて説明を表示させる処理
     display_explanation() {
         this.models.forEach(btn => {
             btn.addEventListener("click", () => {
@@ -47,6 +50,7 @@ class Option_setting {
             });
         });
     }
+    //endpointをchrome storageに保存する処理
     store_endpoint() {
         this.store_button.addEventListener("click", () => {
             let found = false;
@@ -79,7 +83,7 @@ class Option_setting {
             }
         });
     }
-
+    
 }
 
 

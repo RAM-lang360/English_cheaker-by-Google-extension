@@ -1,5 +1,6 @@
 class Background {
     constructor() {
+
         this.request_text = null;
         this.order = null;
         this.endpoint = null;
@@ -10,32 +11,18 @@ class Background {
         this.error = []
 
     }
-    //インストール時のストレージの初期化
+    //拡張機能インストール時にChrome storageを初期化する
     async data_initialization() {
         console.log("拡張機能がインストールされました。ストレージを初期化します。");
+
         await chrome.storage.local.set({
             apikey: "",
             endpoint: "gemini-2.0-flash"
         });
-        await chrome.storage.local.get('apikey', (result) => {
-            this.apikey = result.apikey;
-            if (!this.apikey) {
-                console.log("APIキーが設定されていません。");
-                return;
-            }
-            console.log("APIキーが取得されました:", this.apikey);
-        });
 
-        await chrome.storage.local.get('endpoint', (result) => {
-            this.endpoint = result.endpoint;
-            if (!this.endpoint) {
-                console.log("エンドポイントが設定されていません。");
-                return;
-            }
-            console.log("エンドポイントが取得されました:", this.endpoint);
-        });
     }
-    get_request() {
+    //popupカラのリクエストを受け取りAPIリクエストを実行する
+    get_content() {
         chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
             //リクエストの処理
             if (request.type === "request") {
@@ -44,29 +31,38 @@ class Background {
                 this.order = request.order;
                 this.type = "request";
 
-                // 非同期処理を別スレッドで処理
+                // 非同期的にapi_requestを行う
                 await this.api_request()
-                await this.response_format();
+
+                this.response_format();
+
+                //error発生時の処理
                 if (this.error.length > 0) {
                     //重複の削除
                     this.error = [...new Set(this.error)];
-                    console.error("エラーが発生しました:", this.error);
+                    console.log("エラーが発生しました:", this.error);
                     chrome.runtime.sendMessage({ type: "error", error: this.error });
                 }
+                //レスポンスをpopupに送信
                 else {
                     console.log("レスポンスをpopupに送信:", this.response);
                     chrome.runtime.sendMessage(this.response);
                 }
+                sendResponse();
+                return true
             }
-            //popupからorderに送る際の中継として使用
+
+            //popupからbackgroundを介してorderに送る処理
             if (request.type === "response") {
-                //受信したresponseを各orderに応じてjsへ送信
                 setTimeout(() => {
                     console.log("popupからresponseを受信", request);
                     chrome.runtime.sendMessage(request);
-                }, 3000);
+                }, 100);
+                sendResponse();
+                return true
             }
-            //apiのテスト
+
+            //apiテスト処理
             if (request.type === "test") {
                 console.log("APIテストリクエストを受信:", request);
                 const testResult = await this.api_test();
@@ -74,16 +70,18 @@ class Background {
                     console.log("APIテスト結果:", testResult);
                     chrome.runtime.sendMessage(testResult);
                 } else {
-                    console.error("APIテストに失敗しました");
+                    console.log("APIテストに失敗しました");
                     chrome.runtime.sendMessage({ type: "error", error: ["APIテストに失敗しました"] });
                 }
+                sendResponse();
+                return true
             }
         });
     }
 
 
+    //プロンプトの作成
     prompt_set() {
-        //request_textをあてはめたプロンプトを作成
         const english_text = this.request_text;
         const prompt1 = `
 以下の英文の文節の正しさを判断してください...
@@ -145,20 +143,20 @@ class Background {
             });
         });
 
-        this.endpoint=`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`
-        
+        this.endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`
+
         console.log("APIキー:", this.api_key);
         console.log("エンドポイント:", this.endpoint);
 
         // エラーチェック
         this.error = []; // ← 忘れずに初期化！
         if (!this.api_key.trim()) {
-            console.error("APIキーが未設定です");
+            console.log("APIキーが未設定です");
             this.error.push("APIキーが未設定です");
             return;
         }
         if (!this.endpoint.trim()) {
-            console.error("エンドポイントが未設定です");
+            console.log("エンドポイントが未設定です");
             this.error.push("エンドポイントが未設定です");
             return;
         }
@@ -179,20 +177,20 @@ class Background {
             });
             this.apiresponse = await response.json();
         } catch (error) {
-            console.error("APIリクエスト中にエラー:", error);
+            console.log("APIリクエスト中にエラー:", error);
             this.error.push("APIリクエスト中にエラー");
             return;
         }
     }
 
+    //レスポンスの整形
     response_format() {
         const raw_response = this.apiresponse;
         if (!raw_response?.candidates?.length) {
-            console.error("APIレスポンスが不正です");
+            console.log("APIレスポンスが不正です");
             this.error.push("APIレスポンスが不正です")
             return
         }
-
         const generatedText = raw_response.candidates[0]?.content?.parts?.[0]?.text || "";
         try {
             const jsonMatch = generatedText.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
@@ -231,12 +229,12 @@ class Background {
                 resolve(result.endpoint || "");
             });
         });
-        this.endpoint=`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`
+        this.endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`
         console.log("APIキー:", this.api_key);
         console.log("エンドポイント:", this.endpoint);
         //各数値のチェック
         if (!this.api_key || !this.endpoint) {
-            console.error("APIキーまたはエンドポイントが未設定です");
+            console.log("APIキーまたはエンドポイントが未設定です");
             this.error.push("APIキーまたはエンドポイントが未設定です")
             return;
         }
@@ -262,7 +260,7 @@ class Background {
                 console.log("API接続テスト成功:", result);
                 test = true;
             } else {
-                console.error("API接続テスト失敗:", result);
+                console.log("API接続テスト失敗:", result);
                 test = false;
             }
             //responseの作成　resultがtrueかfalseかで動作確認
@@ -273,7 +271,7 @@ class Background {
             return response
 
         } catch (error) {
-            console.error("API接続テスト中にエラー:", error);
+            console.log("API接続テスト中にエラー:", error);
             return null;
         }
 
@@ -282,4 +280,4 @@ class Background {
 
 const background = new Background();
 background.data_initialization();
-background.get_request();
+background.get_content();
