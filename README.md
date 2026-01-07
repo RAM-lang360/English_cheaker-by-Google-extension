@@ -1,6 +1,8 @@
 # English Check - 英文正誤判断システム
 
 Google Gemini APIを活用したChrome拡張機能で、英文の正誤判断、単語の意味の違い、スペルチェックを行います。
+
+## デモ
 ![alt text](image.png)
 
 ## 🌟 機能
